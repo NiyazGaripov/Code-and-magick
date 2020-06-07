@@ -182,9 +182,15 @@
 </template>
 
 <script>
+  var COEFFICIENT = 1.337;
   var fireballSize = 22;
   var wizardSpeed = 3;
   var wizardWidth = 70;
+
+  var getWizardHeight = () => {
+    return COEFFICIENT * wizardWidth;
+  };
+
 </script>
 
 <script src="js/game.js"></script>
