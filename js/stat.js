@@ -6,6 +6,13 @@ var CLOUD_DELTA = 30;
 var CLOUD_WIDTH = 420;
 var CLOUD_HEIGHT = 270;
 var SHADOW_DELTA = 10;
+var TEXT_X = 155;
+var TEXT_Y = 30;
+var TEXT_GAP = 20;
+var FONT = '16px PT Mono';
+var cloudColor = 'rgba(255, 255, 255, 1';
+var shadowColor = 'rgba(0, 0, 0, 0.7';
+var textColor = 'rgba(0, 0, 0, 1';
 
 var renderCloud = function (ctx, x, y, color) {
   var deltaWidth = CLOUD_WIDTH - CLOUD_DELTA;
@@ -28,9 +35,9 @@ var renderCloud = function (ctx, x, y, color) {
   ctx.fill();
 };
 
-var renderText = function (ctx, text, x, y, font, color) {
-  ctx.font = font;
-  ctx.fillStyle = color;
+var renderText = function (ctx, text, x, y) {
+  ctx.font = FONT;
+  ctx.fillStyle = textColor;
   ctx.fillText(text, x, y);
 };
 
@@ -38,10 +45,9 @@ window.renderStatistics = function (ctx) {
   var shadowX = CLOUD_X + SHADOW_DELTA;
   var shadowY = CLOUD_Y + SHADOW_DELTA;
 
-  renderCloud(ctx, shadowX, shadowY, 'rgba(0, 0, 0, 0.7');
-  renderCloud(ctx, CLOUD_X, CLOUD_Y, '#fff');
+  renderCloud(ctx, shadowX, shadowY, shadowColor);
+  renderCloud(ctx, CLOUD_X, CLOUD_Y, cloudColor);
 
-
-  renderText(ctx, 'Ура вы победили!', 235, 30, '16px PT Mono', '#4caf50');
-  renderText(ctx, 'Список результатов:', 130, 50, '16px PT Mono', '#000');
+  renderText(ctx, 'Ура вы победили!', TEXT_X, TEXT_Y);
+  renderText(ctx, 'Список результатов:', TEXT_X, TEXT_Y + TEXT_GAP);
 };
