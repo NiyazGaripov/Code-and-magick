@@ -28,10 +28,20 @@ var renderCloud = function (ctx, x, y, color) {
   ctx.fill();
 };
 
+var renderText = function (ctx, text, x, y, font, color) {
+  ctx.font = font;
+  ctx.fillStyle = color;
+  ctx.fillText(text, x, y);
+};
+
 window.renderStatistics = function (ctx) {
   var shadowX = CLOUD_X + SHADOW_DELTA;
   var shadowY = CLOUD_Y + SHADOW_DELTA;
 
   renderCloud(ctx, shadowX, shadowY, 'rgba(0, 0, 0, 0.7');
   renderCloud(ctx, CLOUD_X, CLOUD_Y, '#fff');
+
+
+  renderText(ctx, 'Ура вы победили!', 235, 30, '16px PT Mono', '#4caf50');
+  renderText(ctx, 'Список результатов:', 130, 50, '16px PT Mono', '#000');
 };
