@@ -1,7 +1,14 @@
 'use strict';
 
+var CLOUD_X = 100;
+var CLOUD_Y = 10;
+var CLOUD_DELTA = 30;
+var CLOUD_WIDTH = 420;
+var CLOUD_HEIGHT = 270;
+var SHADOW_DELTA = 10;
+
 window.renderStatistics = function (ctx, names, times) {
-  ctx.fillStyle = 'rgba(0, 0, 0, 0.7)';
+  ctx.moveTo(140, 20);
   ctx.beginPath();
   ctx.moveTo(140, 20);
   ctx.lineTo(500, 20);
