@@ -7,36 +7,31 @@ var CLOUD_WIDTH = 420;
 var CLOUD_HEIGHT = 270;
 var SHADOW_DELTA = 10;
 
-window.renderStatistics = function (ctx, names, times) {
-  ctx.moveTo(140, 20);
+var renderCloud = function (ctx, x, y, color) {
+  var deltaWidth = CLOUD_WIDTH - CLOUD_DELTA;
+  var deltaHeight = CLOUD_HEIGHT - CLOUD_DELTA;
+
+  ctx.fillStyle = color;
+  ctx.strokeStyle = color;
   ctx.beginPath();
-  ctx.moveTo(140, 20);
-  ctx.lineTo(500, 20);
-  ctx.quadraticCurveTo(500, 50, 530, 50);
-  ctx.lineTo(530, 260);
-  ctx.quadraticCurveTo(500, 260, 500, 290);
-  ctx.lineTo(140, 290);
-  ctx.quadraticCurveTo(140, 260, 110, 260);
-  ctx.lineTo(110, 50);
-  ctx.quadraticCurveTo(140, 50, 140, 20);
+  ctx.moveTo(x + CLOUD_DELTA, y);
+  ctx.lineTo(x + deltaWidth, y);
+  ctx.quadraticCurveTo(x + deltaWidth, y + CLOUD_DELTA, x + CLOUD_WIDTH, y + CLOUD_DELTA);
+  ctx.lineTo(x + CLOUD_WIDTH, y + deltaHeight);
+  ctx.quadraticCurveTo(x + deltaWidth, y + deltaHeight, x + deltaWidth, y + CLOUD_HEIGHT);
+  ctx.lineTo(x + CLOUD_DELTA, y + CLOUD_HEIGHT);
+  ctx.quadraticCurveTo(x + CLOUD_DELTA, y + deltaHeight, x, y + deltaHeight);
+  ctx.lineTo(x, y + CLOUD_DELTA);
+  ctx.quadraticCurveTo(x + CLOUD_DELTA, y + CLOUD_DELTA, x + CLOUD_DELTA, y);
   ctx.closePath();
   ctx.stroke();
   ctx.fill();
+};
 
-  ctx.fillStyle = '#fff';
-  ctx.strokeStyle = '#fff';
-  ctx.beginPath();
-  ctx.moveTo(130, 10);
-  ctx.lineTo(490, 10);
-  ctx.quadraticCurveTo(490, 40, 520, 40);
-  ctx.lineTo(520, 250);
-  ctx.quadraticCurveTo(490, 250, 490, 280);
-  ctx.lineTo(130, 280);
-  ctx.quadraticCurveTo(130, 250, 100, 250);
-  ctx.lineTo(100, 40);
-  ctx.quadraticCurveTo(130, 40, 130, 10);
-  ctx.closePath();
-  ctx.stroke();
-  ctx.fill();
+window.renderStatistics = function (ctx) {
+  var shadowX = CLOUD_X + SHADOW_DELTA;
+  var shadowY = CLOUD_Y + SHADOW_DELTA;
 
+  renderCloud(ctx, shadowX, shadowY, 'rgba(0, 0, 0, 0.7');
+  renderCloud(ctx, CLOUD_X, CLOUD_Y, '#fff');
 };
