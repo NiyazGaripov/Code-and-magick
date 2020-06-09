@@ -48,7 +48,14 @@ var renderText = function (ctx, text, x, y) {
   ctx.fillText(text, x, y);
 };
 
-window.renderStatistics = function (ctx) {
+var renderHistogram = function (ctx, names) {
+  names.forEach(function (i) {
+    ctx.fillText(names[i], BAR_X + (BAR_GAP + BAR_WIDTH) * i, BAR_TEXT_Y);
+    ctx.fillRect(BAR_X + (BAR_GAP + BAR_WIDTH) * i, BAR_Y, BAR_WIDTH, BAR_HEIGHT);
+  });
+};
+
+window.renderStatistics = function (ctx, names) {
   var shadowX = CLOUD_X + SHADOW_DELTA;
   var shadowY = CLOUD_Y + SHADOW_DELTA;
 
@@ -57,4 +64,6 @@ window.renderStatistics = function (ctx) {
 
   renderText(ctx, 'Ура вы победили!', TEXT_X, TEXT_Y);
   renderText(ctx, 'Список результатов:', TEXT_X, TEXT_Y + TEXT_GAP);
+
+  renderHistogram(ctx, names);
 };
