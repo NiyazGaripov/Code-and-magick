@@ -13,14 +13,13 @@ var BAR_HEIGHT = 150;
 var BAR_WIDTH = 40;
 var BAR_GAP = 50;
 var BAR_X = 155;
-var BAR_Y = 90;
+var BAR_Y = 240;
 var BAR_TEXT_Y = 260;
 var FONT = '16px PT Mono';
 var cloudColor = 'rgba(255, 255, 255, 1';
 var shadowColor = 'rgba(0, 0, 0, 0.7';
 var textColor = 'rgba(0, 0, 0, 1';
 var myBarColor = 'rgba(255, 0, 0, 1)';
-var barColor = 'rgba(0, 117, 170, 1)';
 
 var renderCloud = function (ctx, x, y, color) {
   var deltaWidth = CLOUD_WIDTH - CLOUD_DELTA;
@@ -49,14 +48,21 @@ var renderText = function (ctx, text, x, y) {
   ctx.fillText(text, x, y);
 };
 
-var renderHistogram = function (ctx, names) {
+var getMaxElement = function (array) {
+  return Math.max.apply(null, array);
+};
+
+var renderHistogram = function (ctx, names, times) {
+  var maxTime = getMaxElement(times);
+
   names.forEach(function (i) {
     ctx.fillText(names[i], BAR_X + (BAR_GAP + BAR_WIDTH) * i, BAR_TEXT_Y);
-    ctx.fillRect(BAR_X + (BAR_GAP + BAR_WIDTH) * i, BAR_Y, BAR_WIDTH, BAR_HEIGHT);
+    ctx.fillText(Math.round(times[i]), BAR_X + (BAR_GAP + BAR_WIDTH) * i, BAR_Y + (BAR_HEIGHT * times[i]) / -maxTime - 10);
+    ctx.fillRect(BAR_X + (BAR_GAP + BAR_WIDTH) * i, BAR_Y, BAR_WIDTH, (BAR_HEIGHT * times[i]) / -maxTime);
   });
 };
 
-window.renderStatistics = function (ctx, names) {
+window.renderStatistics = function (ctx, names, times) {
   var shadowX = CLOUD_X + SHADOW_DELTA;
   var shadowY = CLOUD_Y + SHADOW_DELTA;
 
@@ -66,5 +72,5 @@ window.renderStatistics = function (ctx, names) {
   renderText(ctx, 'Ура вы победили!', TEXT_X, TEXT_Y);
   renderText(ctx, 'Список результатов:', TEXT_X, TEXT_Y + TEXT_GAP);
 
-  renderHistogram(ctx, names);
+  renderHistogram(ctx, names, times);
 };
