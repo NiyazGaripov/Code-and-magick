@@ -19,7 +19,8 @@ var FONT = '16px PT Mono';
 var cloudColor = 'rgba(255, 255, 255, 1';
 var shadowColor = 'rgba(0, 0, 0, 0.7';
 var textColor = 'rgba(0, 0, 0, 1';
-
+var myBarColor = 'rgba(255, 0, 0, 1)';
+var barColor = 'rgba(0, 117, 170, 1)';
 
 var renderCloud = function (ctx, x, y, color) {
   var deltaWidth = CLOUD_WIDTH - CLOUD_DELTA;
