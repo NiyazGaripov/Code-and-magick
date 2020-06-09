@@ -9,10 +9,17 @@ var SHADOW_DELTA = 10;
 var TEXT_X = 155;
 var TEXT_Y = 30;
 var TEXT_GAP = 20;
+var BAR_HEIGHT = 150;
+var BAR_WIDTH = 40;
+var BAR_GAP = 50;
+var BAR_X = 155;
+var BAR_Y = 90;
+var BAR_TEXT_Y = 260;
 var FONT = '16px PT Mono';
 var cloudColor = 'rgba(255, 255, 255, 1';
 var shadowColor = 'rgba(0, 0, 0, 0.7';
 var textColor = 'rgba(0, 0, 0, 1';
+
 
 var renderCloud = function (ctx, x, y, color) {
   var deltaWidth = CLOUD_WIDTH - CLOUD_DELTA;
