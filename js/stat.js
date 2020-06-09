@@ -52,12 +52,18 @@ var getMaxElement = function (array) {
   return Math.max.apply(null, array);
 };
 
+var getRandomValue = function () {
+  return Math.floor(Math.random() * 100);
+};
+
 var renderHistogram = function (ctx, names, times) {
   var maxTime = getMaxElement(times);
 
   names.forEach(function (i) {
+    ctx.fillStyle = textColor;
     ctx.fillText(names[i], BAR_X + (BAR_GAP + BAR_WIDTH) * i, BAR_TEXT_Y);
-    ctx.fillText(Math.round(times[i]), BAR_X + (BAR_GAP + BAR_WIDTH) * i, BAR_Y + (BAR_HEIGHT * times[i]) / -maxTime - 10);
+    ctx.fillText(Math.floor(times[i]), BAR_X + (BAR_GAP + BAR_WIDTH) * i, BAR_Y + (BAR_HEIGHT * times[i]) / -maxTime - 10);
+    ctx.fillStyle = names[i] === 'Вы' ? myBarColor : getColor();
     ctx.fillRect(BAR_X + (BAR_GAP + BAR_WIDTH) * i, BAR_Y, BAR_WIDTH, (BAR_HEIGHT * times[i]) / -maxTime);
   });
 };
