@@ -56,10 +56,20 @@ var getRandomValue = function () {
   return Math.floor(Math.random() * 100);
 };
 
+var getColor = function () {
+  var randomValue = getRandomValue();
+
+  if (randomValue > 95) {
+    randomValue = 95;
+  }
+
+  return 'hsl(240, 100%, ' + randomValue + '%)';
+};
+
 var renderHistogram = function (ctx, names, times) {
   var maxTime = getMaxElement(times);
 
-  names.forEach(function (i) {
+  names.forEach(function (item, i) {
     ctx.fillStyle = textColor;
     ctx.fillText(names[i], BAR_X + (BAR_GAP + BAR_WIDTH) * i, BAR_TEXT_Y);
     ctx.fillText(Math.floor(times[i]), BAR_X + (BAR_GAP + BAR_WIDTH) * i, BAR_Y + (BAR_HEIGHT * times[i]) / -maxTime - 10);
