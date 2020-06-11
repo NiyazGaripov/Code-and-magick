@@ -44,3 +44,7 @@ var EYES_COLORS = [
 var wizardForm = document.querySelector('.setup');
 
 wizardForm.classList.remove('hidden');
+
+var getRandomElement = function (element) {
+  return Math.floor(Math.random() * element.length);
+};
