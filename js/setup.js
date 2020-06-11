@@ -1,5 +1,7 @@
 'use strict';
 
+var AMOUNT_WIZARDS = 4;
+
 var WIZARD_NAMES = [
   'Иван',
   'Хуан Себастьян',
