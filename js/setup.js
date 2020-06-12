@@ -50,3 +50,14 @@ wizardForm.classList.remove('hidden');
 var getRandomArrayElement = function (array) {
   return array[Math.floor(Math.random() * array.length)];
 };
+
+var getRandomWizards = function () {
+  for (var i = 0; i < AMOUNT_WIZARDS; i++) {
+    wizards[i] = {
+      name: getRandomArrayElement(WIZARD_NAMES) + ' ' + getRandomArrayElement(WIZARD_SURNAMES),
+      coatColor: getRandomArrayElement(COAT_COLORS),
+      eyesColor: getRandomArrayElement(EYES_COLORS),
+    };
+  }
+  return wizards;
+};
