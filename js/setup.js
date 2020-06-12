@@ -1,5 +1,7 @@
 'use strict';
 
+var wizards = [];
+
 var AMOUNT_WIZARDS = 4;
 
 var WIZARD_NAMES = [
@@ -45,6 +47,6 @@ var wizardForm = document.querySelector('.setup');
 
 wizardForm.classList.remove('hidden');
 
-var getRandomElement = function (element) {
-  return Math.floor(Math.random() * element.length);
+var getRandomArrayElement = function (array) {
+  return array[Math.floor(Math.random() * array.length)];
 };
