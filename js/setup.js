@@ -48,7 +48,6 @@ wizardForm.classList.remove('hidden');
 
 var template = document.querySelector('#similar-wizard-template');
 var templateItem = template.content.querySelector('.setup-similar-item');
-var setupSimilar = wizardForm.querySelector('.setup-similar');
 var similarList = document.querySelector('.setup-similar-list');
 
 var getRandomArrayElement = function (array) {
@@ -83,3 +82,9 @@ var renderWizard = function () {
 
   similarList.appendChild(fragment);
 };
+
+var similarWizards = document.querySelector('.setup-similar');
+similarWizards.classList.remove('hidden');
+
+getRandomWizards();
+renderWizard();
