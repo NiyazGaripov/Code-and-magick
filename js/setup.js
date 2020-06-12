@@ -66,8 +66,11 @@ var getRandomWizards = function () {
   return wizards;
 };
 
-for (var i = 0; i < AMOUNT_WIZARDS; i++) {
+var createWizard = function (wizard) {
   var wizardElement = templateItem.cloneNode(true);
+  wizardElement.querySelector('.setup-similar-label').textContent = wizard.name;
+  wizardElement.querySelector('.wizard-coat').style.fill = wizard.coatColor;
+  wizardElement.querySelector('.wizard-eyes').style.fill = wizard.eyesColor;
 
-  similarList.appendChild(wizardElement);
-}
+  return wizardElement;
+};
