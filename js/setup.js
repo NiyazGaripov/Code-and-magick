@@ -65,3 +65,9 @@ var getRandomWizards = function () {
   }
   return wizards;
 };
+
+for (var i = 0; i < AMOUNT_WIZARDS; i++) {
+  var wizardElement = templateItem.cloneNode(true);
+
+  similarList.appendChild(wizardElement);
+}
