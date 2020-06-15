@@ -1,5 +1,8 @@
 'use strict';
 
+var ESC_KEY = 'Escape';
+var ENTER_KEY = 'Enter';
+
 var wizards = [];
 
 var AMOUNT_WIZARDS = 4;
