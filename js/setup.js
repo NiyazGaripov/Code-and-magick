@@ -45,6 +45,7 @@ var EYES_COLORS = [
 
 var wizardForm = document.querySelector('.setup');
 var formOpen = document.querySelector('.setup-open');
+var formClose = wizardForm.querySelector('.setup-close');
 
 var template = document.querySelector('#similar-wizard-template');
 var templateItem = template.content.querySelector('.setup-similar-item');
@@ -93,4 +94,10 @@ var formOpenClickHandler = function () {
   wizardForm.classList.remove('hidden');
 };
 
+var formCloseClickHandler = function () {
+  wizardForm.classList.add('hidden');
+};
+
 formOpen.addEventListener('click', formOpenClickHandler);
+
+formClose.addEventListener('click', formCloseClickHandler);
