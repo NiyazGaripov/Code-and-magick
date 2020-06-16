@@ -1,7 +1,7 @@
 'use strict';
 
-var ESC_KEY = 'Escape';
-var ENTER_KEY = 'Enter';
+var ESC_KEY = '27';
+var ENTER_KEY = '13';
 
 var wizards = [];
 
@@ -93,14 +93,8 @@ similarWizards.classList.remove('hidden');
 getRandomWizards();
 renderWizard();
 
-var formOpenClickHandler = function () {
-  wizardForm.classList.remove('hidden');
+var popupEscPressHandler = function (evt) {
+  if (evt.keyCode === ESC_KEY) {
+    closePopup();
+  }
 };
-
-var formCloseClickHandler = function () {
-  wizardForm.classList.add('hidden');
-};
-
-formOpen.addEventListener('click', formOpenClickHandler);
-
-formClose.addEventListener('click', formCloseClickHandler);
