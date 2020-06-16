@@ -118,3 +118,13 @@ formOpen.addEventListener('keydown', function (evt) {
     openPopup();
   }
 });
+
+formClose.addEventListener('click', function () {
+  closePopup();
+});
+
+formClose.addEventListener('keydown', function (evt) {
+  if (evt.keyCode === ENTER_KEY) {
+    closePopup();
+  }
+});
