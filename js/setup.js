@@ -103,3 +103,8 @@ var openPopup = function () {
   wizardForm.classList.remove('hidden');
   document.addEventListener('keydown', popupEscPressHandler);
 };
+
+var closePopup = function () {
+  wizardForm.classList.add('hidden');
+  document.removeEventListener('keydown', popupEscPressHandler);
+};
