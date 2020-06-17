@@ -119,11 +119,17 @@ var popupEscPressHandler = function (evt) {
 var openPopup = function () {
   wizardForm.classList.remove('hidden');
   document.addEventListener('keydown', popupEscPressHandler);
+  wizardCoat.addEventListener('click', wizardCoatClickHandler);
+  wizardEyes.addEventListener('click', wizardEyesClickHandler);
+  wizardFireball.addEventListener('click', wizardFireballClickHandler);
 };
 
 var closePopup = function () {
   wizardForm.classList.add('hidden');
   document.removeEventListener('keydown', popupEscPressHandler);
+  wizardCoat.removeEventListener('click', wizardCoatClickHandler);
+  wizardEyes.removeEventListener('click', wizardEyesClickHandler);
+  wizardFireball.removeEventListener('click', wizardFireballClickHandler);
 };
 
 formOpen.addEventListener('click', function () {
@@ -157,14 +163,14 @@ var getWizardElementColor = function (element, color, input) {
   input.value = currentColor;
 };
 
-wizardCoat.addEventListener('click', function () {
+var wizardCoatClickHandler = function () {
   getWizardElementColor(wizardCoat, COAT_COLORS, inputCoatColor);
-});
+};
 
-wizardEyes.addEventListener('click', function () {
+var wizardEyesClickHandler = function () {
   getWizardElementColor(wizardEyes, EYES_COLORS, inputEyesColor);
-});
+};
 
-wizardFireball.addEventListener('click', function () {
+var wizardFireballClickHandler = function () {
   getWizardElementColor(wizardFireball, FIREBALL_COLORS, inputFireballColor);
-});
+};
