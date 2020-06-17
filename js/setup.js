@@ -145,3 +145,14 @@ formClose.addEventListener('keydown', function (evt) {
     closePopup();
   }
 });
+
+var getWizardElementColor = function (element, color, input) {
+  var currentColor = getRandomArrayElement(color);
+
+  if (element === wizardFireball) {
+    element.style.backgroundColor = currentColor;
+  }
+
+  element.style.fill = currentColor;
+  input.value = currentColor;
+};
