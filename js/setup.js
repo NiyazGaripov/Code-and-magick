@@ -49,6 +49,7 @@ var EYES_COLORS = [
 var wizardForm = document.querySelector('.setup');
 var formOpen = document.querySelector('.setup-open');
 var formClose = wizardForm.querySelector('.setup-close');
+var inputName = document.querySelector('.setup-user-name');
 
 var template = document.querySelector('#similar-wizard-template');
 var templateItem = template.content.querySelector('.setup-similar-item');
@@ -94,7 +95,7 @@ getRandomWizards();
 renderWizard();
 
 var popupEscPressHandler = function (evt) {
-  if (evt.keyCode === ESC_KEY) {
+  if (evt.keyCode === ESC_KEY && inputName !== document.activeElement) {
     closePopup();
   }
 };
