@@ -63,6 +63,14 @@ var template = document.querySelector('#similar-wizard-template');
 var templateItem = template.content.querySelector('.setup-similar-item');
 var similarList = document.querySelector('.setup-similar-list');
 
+var setupWizard = document.querySelector('.setup-wizard');
+var wizardCoat = setupWizard.querySelector('.wizard-coat');
+var inputCoatColor = wizardForm.querySelector('[name=coat-color]');
+var wizardEyes = setupWizard.querySelector('.wizard-eyes');
+var inputEyesColor = wizardForm.querySelector('[name=eyes-color]');
+var wizardFireball = document.querySelector('.setup-fireball-wrap');
+var inputFireballColor = wizardForm.querySelector('[name=fireball-color]');
+
 var getRandomArrayElement = function (array) {
   return array[Math.floor(Math.random() * array.length)];
 };
