@@ -156,3 +156,15 @@ var getWizardElementColor = function (element, color, input) {
   element.style.fill = currentColor;
   input.value = currentColor;
 };
+
+wizardCoat.addEventListener('click', function () {
+  getWizardElementColor(wizardCoat, COAT_COLORS, inputCoatColor);
+});
+
+wizardEyes.addEventListener('click', function () {
+  getWizardElementColor(wizardEyes, EYES_COLORS, inputEyesColor);
+});
+
+wizardFireball.addEventListener('click', function () {
+  getWizardElementColor(wizardFireball, FIREBALL_COLORS, inputFireballColor);
+});
