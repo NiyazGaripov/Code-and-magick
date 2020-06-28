@@ -47,8 +47,6 @@
   var similarList = document.querySelector('.setup-similar-list');
   var template = document.querySelector('#similar-wizard-template');
   var templateItem = template.content.querySelector('.setup-similar-item');
-  var setupWizard = document.querySelector('.setup-wizard');
-  var wizardFireball = setupWizard.querySelector('.setup-fireball-wrap');
 
   var getRandomArrayElement = function (array) {
     return array[Math.floor(Math.random() * array.length)];
@@ -89,12 +87,7 @@
   getRandomWizards();
   renderWizard();
 
-  var getWizardElementColor = function (element, color, input) {
-    var currentColor = getRandomArrayElement(color);
-    if (element === wizardFireball) {
-      element.style.backgroundColor = currentColor;
-    }
-    element.style.fill = currentColor;
-    input.value = currentColor;
+  window.setup = {
+    getRandomArrayElement: getRandomArrayElement,
   };
 })();
