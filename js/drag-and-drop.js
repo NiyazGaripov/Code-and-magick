@@ -25,6 +25,8 @@
         y: moveEvt.clientY
       };
 
+      setup.style.top = (setup.offsetTop - shift.y) + 'px';
+      setup.style.left = (setup.offsetLeft - shift.x) + 'px';
     };
 
     document.addEventListener('mousemove', elementMouseMoveHandler);
