@@ -7,6 +7,8 @@
   uploadElement.addEventListener('mousedown', function (evt) {
     evt.preventDefault();
 
+    var isDragged = false;
+
     var startСoords = {
       x: evt.clientX,
       y: evt.clientY
@@ -14,6 +16,8 @@
 
     var elementMouseMoveHandler = function (moveEvt) {
       moveEvt.preventDefault();
+
+      isDragged = true;
 
       var shift = {
         x: startСoords.x - moveEvt.clientX,
@@ -34,6 +38,15 @@
 
       document.removeEventListener('mousemove', elementMouseMoveHandler);
       document.removeEventListener('mouseup', elementMouseUpHandler);
+
+      if (isDragged) {
+        var elementPreventDefaultHandler = function (clickEvt) {
+          clickEvt.preventDefault();
+
+          uploadElement.removeEventListener('click', elementPreventDefaultHandler);
+        };
+        uploadElement.addEventListener('click', elementPreventDefaultHandler);
+      }
     };
 
     document.addEventListener('mousemove', elementMouseMoveHandler);
