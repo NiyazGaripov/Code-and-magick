@@ -1,6 +1,6 @@
 'use strict';
 
-(function() {
+(function () {
   var CLOUD_X = 100;
   var CLOUD_Y = 10;
   var CLOUD_DELTA = 30;
