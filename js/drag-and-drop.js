@@ -29,6 +29,13 @@
       setup.style.left = (setup.offsetLeft - shift.x) + 'px';
     };
 
+    var elementMouseUpHandler = function (upEvt) {
+      upEvt.preventDefault();
+
+      document.removeEventListener('mousemove', elementMouseMoveHandler);
+      document.removeEventListener('mouseup', elementMouseUpHandler);
+    };
+
     document.addEventListener('mousemove', elementMouseMoveHandler);
     document.addEventListener('mouseup', elementMouseUpHandler);
   });
