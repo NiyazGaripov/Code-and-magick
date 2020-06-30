@@ -1,9 +1,9 @@
 'use strict';
 
 (function () {
-  var ESC_KEY = '27';
+  var ESC_KEY = 'Escape';
 
-  var ENTER_KEY = '13';
+  var ENTER_KEY = 'Enter';
 
   var COAT_COLORS = [
     'rgb(101, 137, 164)',
@@ -43,7 +43,7 @@
   var inputFireballColor = wizardForm.querySelector('[name=fireball-color]');
 
   var popupEscPressHandler = function (evt) {
-    if (evt.keyCode === ESC_KEY && inputName !== document.activeElement) {
+    if (evt.key === ESC_KEY && inputName !== document.activeElement) {
       closePopup();
     }
   };
@@ -69,7 +69,7 @@
   });
 
   formOpen.addEventListener('keydown', function (evt) {
-    if (evt.keyCode === ENTER_KEY) {
+    if (evt.key === ENTER_KEY) {
       openPopup();
     }
   });
@@ -79,7 +79,7 @@
   });
 
   formClose.addEventListener('keydown', function (evt) {
-    if (evt.keyCode === ENTER_KEY) {
+    if (evt.key === ENTER_KEY) {
       closePopup();
     }
   });
