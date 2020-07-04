@@ -3,6 +3,7 @@
   var URL = 'https://js.dump.academy/code-and-magick';
 
   var save = function (data, onLoad, onError) {
-
+    var xhr = new XMLHttpRequest;
+    xhr.responseType = 'json';
   };
 })();
