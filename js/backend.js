@@ -4,7 +4,14 @@
     POST: 'https://js.dump.academy/code-and-magick',
     GET: 'https://js.dump.academy/code-and-magick/data',
   };
-  var SUCCESS_CODE = 200;
+
+  var StatusCode = {
+    OK: 200,
+    BAD_REQUEST: 400,
+    NOT_FOUND: 404,
+    INTERNAL_SERVER: 500,
+  };
+
   var TIMEOUT = 10000;
 
   var processServerResponse = function (xhr, method, onLoad, onError) {
@@ -13,10 +20,19 @@
     xhr.open(method, UrlTypes[method]);
 
     xhr.addEventListener('load', function () {
-      if (xhr.status === SUCCESS_CODE) {
-        onLoad(xhr.response);
-      } else {
-        onError('Cтатус ответа: ' + xhr.status + ' ' + xhr.statusText);
+      switch (xhr.status) {
+        case StatusCode.OK:
+          onLoad(xhr.response);
+          break;
+        case StatusCode.BAD_REQUEST:
+          onError('Сервер не смог обработать ваш запрос. Попробуйте открыть сайт другим браузером.');
+          break;
+        case StatusCode.NOT_FOUND:
+          onError('Запрашиваемая страница не найдена. Проверьте корректность введённого адреса страницы.');
+          break;
+        case StatusCode.INTERNAL_SERVER:
+          onError('Сервер не отвечает. Повторите попытку позже.');
+          break;
       }
     });
 
