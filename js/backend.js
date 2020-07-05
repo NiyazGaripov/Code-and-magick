@@ -1,8 +1,8 @@
 'use strict';
 (function () {
   var UrlTypes = {
-    POST: 'https://js.dump.academy/code-and-magick',
-    GET: 'https://js.dump.academy/code-and-magick/data',
+    POST: 'https://javascript.pages.academy/code-and-magick',
+    GET: 'https://javascript.pages.academy/code-and-magick/data',
   };
 
   var StatusCode = {
