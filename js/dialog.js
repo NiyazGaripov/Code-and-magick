@@ -106,35 +106,17 @@
     getWizardElementColor(wizardFireball, FIREBALL_COLORS, inputFireballColor);
   };
 
-  var createAlertsElement = function (message) {
-    var node = document.createElement('div');
-    node.style = 'z-index: 1; margin: 0 auto; text-align: center;';
-    node.style.position = 'absolute';
-    node.style.right = 0;
-    node.style.left = 0;
-    node.style.fontSize = '30px';
-    node.style.backgroundColor = message ? 'red' : 'green';
-
-    node.textContent = message ? message : 'Данные успешно отправлены';
-
-    if (message) {
-      formWrap.insertAdjacentElement('afterbegin', node);
-    } else {
-      document.body.insertAdjacentElement('afterbegin', node);
-    }
-  };
-
-  var successHandler = function () {
+  var successUploadDataHandler = function () {
     formWrap.classList.add('hidden');
-    createAlertsElement();
+    window.alert.createElement();
   };
 
-  var errorHandler = function (message) {
-    createAlertsElement(message);
+  var errorUploadDataHandler = function (message) {
+    window.alert.createElement(message);
   };
 
   wizardForm.addEventListener('submit', function (evt) {
-    window.backend.save(new FormData(wizardForm), successHandler, errorHandler);
+    window.backend.save(new FormData(wizardForm), successUploadDataHandler, errorUploadDataHandler);
     evt.preventDefault();
   });
 })();
