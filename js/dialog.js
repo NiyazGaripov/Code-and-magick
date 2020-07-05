@@ -129,6 +129,10 @@
     createAlertsElement();
   };
 
+  var errorHandler = function (message) {
+    createAlertsElement(message);
+  };
+
   wizardForm.addEventListener('submit', function (evt) {
     window.backend.save(new FormData(wizardForm), successHandler, errorHandler);
     evt.preventDefault();
