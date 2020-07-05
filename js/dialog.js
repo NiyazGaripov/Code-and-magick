@@ -30,17 +30,18 @@
     '#e6e848',
   ];
 
-  var wizardForm = document.querySelector('.setup');
+  var formWrap = document.querySelector('.setup');
+  var wizardForm = formWrap.querySelector('.setup-wizard-form');
   var formOpen = document.querySelector('.setup-open');
-  var formClose = wizardForm.querySelector('.setup-close');
+  var formClose = formWrap.querySelector('.setup-close');
   var inputName = wizardForm.querySelector('.setup-user-name');
   var setupWizard = document.querySelector('.setup-wizard');
   var wizardCoat = setupWizard.querySelector('.wizard-coat');
-  var inputCoatColor = wizardForm.querySelector('[name=coat-color]');
+  var inputCoatColor = formWrap.querySelector('[name=coat-color]');
   var wizardEyes = setupWizard.querySelector('.wizard-eyes');
-  var inputEyesColor = wizardForm.querySelector('[name=eyes-color]');
+  var inputEyesColor = formWrap.querySelector('[name=eyes-color]');
   var wizardFireball = wizardForm.querySelector('.setup-fireball-wrap');
-  var inputFireballColor = wizardForm.querySelector('[name=fireball-color]');
+  var inputFireballColor = formWrap.querySelector('[name=fireball-color]');
 
   var popupEscPressHandler = function (evt) {
     if (evt.key === ESC_KEY && inputName !== document.activeElement) {
@@ -49,7 +50,7 @@
   };
 
   var openPopup = function () {
-    wizardForm.classList.remove('hidden');
+    formWrap.classList.remove('hidden');
     document.addEventListener('keydown', popupEscPressHandler);
     wizardCoat.addEventListener('click', wizardCoatClickHandler);
     wizardEyes.addEventListener('click', wizardEyesClickHandler);
@@ -57,7 +58,7 @@
   };
 
   var closePopup = function () {
-    wizardForm.classList.add('hidden');
+    formWrap.classList.add('hidden');
     document.removeEventListener('keydown', popupEscPressHandler);
     wizardCoat.removeEventListener('click', wizardCoatClickHandler);
     wizardEyes.removeEventListener('click', wizardEyesClickHandler);
