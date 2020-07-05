@@ -9,5 +9,8 @@
     xhr.addEventListener('load', function () {
       onLoad(xhr.response);
     });
+
+    xhr.open('POST', URL);
+    xhr.send();
   };
 })();
