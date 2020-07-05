@@ -124,6 +124,11 @@
     }
   };
 
+  var successHandler = function () {
+    formWrap.classList.add('hidden');
+    createAlertsElement();
+  };
+
   wizardForm.addEventListener('submit', function (evt) {
     window.backend.save(new FormData(wizardForm), successHandler, errorHandler);
     evt.preventDefault();
