@@ -4,6 +4,9 @@
   var AMOUNT_WIZARDS = 4;
 
   var allWizards = [];
+  var coatColor;
+  var eyesColor;
+  var fireballColor;
 
   var COAT_COLORS = [
     'rgb(101, 137, 164)',
@@ -42,8 +45,6 @@
   var inputEyesColor = formWrap.querySelector('[name=eyes-color]');
   var inputFireballColor = formWrap.querySelector('[name=fireball-color]');
 
-  var coatColor;
-
   var getRandomArrayElement = function (array) {
     return array[Math.floor(Math.random() * array.length)];
   };
@@ -78,9 +79,11 @@
     getWizardElementColor(wizardFireball, FIREBALL_COLORS, inputFireballColor);
   };
 
-  var successLoadDataHandler = function (wizards) {
-    allWizards = wizards;
-    console.dir(allWizards)
+  var updateWizards = function () {
+    renderWizards(allWizards);
+  }
+
+  var renderWizards = function (wizards) {
     var fragment = document.createDocumentFragment();
     for (var i = 0; i < AMOUNT_WIZARDS; i++) {
       fragment.appendChild(createWizard(wizards[i]));
@@ -88,6 +91,11 @@
 
     similarList.appendChild(fragment);
     formWrap.querySelector('.setup-similar').classList.remove('hidden');
+  }
+
+  var successLoadDataHandler = function (wizards) {
+    allWizards = wizards;
+    updateWizards();
   };
 
   var errorLoadDataHandler = function (message) {
