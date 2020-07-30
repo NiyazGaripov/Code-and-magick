@@ -146,6 +146,21 @@
     updateWizards();
   }
 
+  wizard.onEyesChange = function (color) {
+    eyesColor = color;
+    updateWizards();
+  }
+
+  wizard.onFireballChange = function (color) {
+    fireballColor = color;
+    updateWizards();
+  }
+
+  var successLoadDataHandler = function (wizards) {
+    allWizards = wizards;
+    updateWizards();
+  };
+
   var errorLoadDataHandler = function (message) {
     window.alert.createElement(message);
   };
