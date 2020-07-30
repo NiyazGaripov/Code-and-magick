@@ -45,6 +45,12 @@
   var inputEyesColor = formWrap.querySelector('[name=eyes-color]');
   var inputFireballColor = formWrap.querySelector('[name=fireball-color]');
 
+  var wizard = {
+    onCoatChange: function () {},
+    onEyesChange: function () {},
+    onFireballChange: function () {},
+  }
+
   var getRandomArrayElement = function (array) {
     return array[Math.floor(Math.random() * array.length)];
   };
@@ -58,6 +64,16 @@
     return wizardElement;
   };
 
+  var updateWizards = function () {
+    renderWizards(allWizards.sort(function (left, right) {
+      var rankDiff = getRank(right) - getRank(left);
+      if (rankDiff === 0) {
+        rankDiff = namesComparator(left.name, right.name);
+      }
+      return rankDiff;
+    }));
+  }
+
   var getWizardElementColor = function (element, color, input) {
     var currentColor = getRandomArrayElement(color);
     if (element === wizardFireball) {
@@ -65,23 +81,8 @@
     }
     element.style.fill = currentColor;
     input.value = currentColor;
+    wizard.onChange(currentColor);
   };
-
-  var wizardCoatClickHandler = function () {
-    getWizardElementColor(wizardCoat, COAT_COLORS, inputCoatColor);
-  };
-
-  var wizardEyesClickHandler = function () {
-    getWizardElementColor(wizardEyes, EYES_COLORS, inputEyesColor);
-  };
-
-  var wizardFireballClickHandler = function () {
-    getWizardElementColor(wizardFireball, FIREBALL_COLORS, inputFireballColor);
-  };
-
-  var updateWizards = function () {
-    renderWizards(allWizards);
-  }
 
   var renderWizards = function (wizards) {
     var fragment = document.createDocumentFragment();
@@ -93,10 +94,10 @@
     formWrap.querySelector('.setup-similar').classList.remove('hidden');
   }
 
-  var successLoadDataHandler = function (wizards) {
-    allWizards = wizards;
+  wizard.onCoatChange = function (color) {
+    coatColor = color;
     updateWizards();
-  };
+  }
 
   var errorLoadDataHandler = function (message) {
     window.alert.createElement(message);
