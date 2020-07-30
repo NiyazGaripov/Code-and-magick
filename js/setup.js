@@ -64,6 +64,32 @@
     return wizardElement;
   };
 
+  var getRank = function (wizard) {
+    var rank = 0;
+
+    if (wizard.colorCoat === coatColor) {
+      rank += 3;
+    }
+    if (wizard.colorEyes === eyesColor) {
+      rank += 2;
+    }
+    if (wizard.colorFireball === fireballColor) {
+      rank += 1;
+    }
+
+    return rank;
+  }
+
+  var namesComparator = function (left, right) {
+    if (left > right) {
+      return 1;
+    } else if (left < right) {
+      return -1;
+    } else {
+      return 0;
+    }
+  }
+
   var updateWizards = function () {
     renderWizards(allWizards.sort(function (left, right) {
       var rankDiff = getRank(right) - getRank(left);
