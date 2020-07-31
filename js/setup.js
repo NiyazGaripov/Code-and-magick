@@ -7,7 +7,6 @@
   var coatColor;
   var eyesColor;
   var fireballColor;
-  var lastTimeout
 
   var COAT_COLORS = [
     'rgb(101, 137, 164)',
@@ -134,26 +133,34 @@
   }
 
   var debounce = function (callback) {
-    if (lastTimeout) {
-      window.clearTimeout(lastTimeout);
-    }
-    lastTimeout = window.setTimeout(callback, DEBOUNCE_INTERVAL);
+    var lastTimeout = null;
+
+    return function() {
+      var parameters = arguments;
+
+      if (lastTimeout) {
+        window.clearTimeout(lastTimeout);
+      }
+      lastTimeout = window.setTimeout(function() {
+        callback.apply(null, parameters);
+      }, DEBOUNCE_INTERVAL);
+    };
   }
 
-  wizard.onCoatChange = function (color) {
+  wizard.onCoatChange = debounce( function (color) {
     coatColor = color;
-    debounce(updateWizards);
-  }
+    updateWizards();
+  })
 
-  wizard.onEyesChange = function (color) {
+  wizard.onEyesChange = debounce( function (color) {
     eyesColor = color;
-    debounce(updateWizards);
-  }
+    updateWizards();
+  })
 
-  wizard.onFireballChange = function (color) {
+  wizard.onFireballChange = debounce( function (color) {
     fireballColor = color;
-    debounce(updateWizards);
-  }
+    updateWizards();
+  })
 
   var successLoadDataHandler = function (wizards) {
     allWizards = wizards;
