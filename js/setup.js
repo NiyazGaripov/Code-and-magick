@@ -38,12 +38,7 @@
   var templateItem = template.content.querySelector('.setup-similar-item');
   var formWrap = document.querySelector('.setup');
   var wizardForm = formWrap.querySelector('.setup-wizard-form');
-  var wizardFireball = wizardForm.querySelector('.setup-fireball-wrap');
-  var wizardCoat = wizardForm.querySelector('.wizard-coat');
-  var wizardEyes = wizardForm.querySelector('.wizard-eyes');
-  var inputCoatColor = formWrap.querySelector('[name=coat-color]');
-  var inputEyesColor = formWrap.querySelector('[name=eyes-color]');
-  var inputFireballColor = formWrap.querySelector('[name=fireball-color]');
+  var wizardFireball = wizardForm.querySelector('.setup-fireball');
 
   var wizard = {
     onCoatChange: function () {},
@@ -100,39 +95,29 @@
     }));
   }
 
-  // var getWizardElementColor = function (element, color, input) {
-  //   var currentColor = getRandomArrayElement(color);
-  //   if (element === wizardFireball) {
-  //     element.style.backgroundColor = currentColor;
-  //   }
-  //   element.style.fill = currentColor;
-  //   input.value = currentColor;
-  //   wizard.onChange(currentColor);
-  // };
+  var getWizardElementColor = function (evt, colors, callback) {
+    var newColor = getRandomArrayElement(colors);
 
-  var wizardCoatClickHandler = function () {
-    var newColor = getRandomArrayElement(COAT_COLORS);
-    this.style.fill = newColor;
-    this.value = newColor;
-    wizard.onCoatChange(newColor);
+    if (evt.target === wizardFireball) {
+      evt.target.style.backgroundColor = newColor;
+    }
+    evt.target.style.fill = newColor;
+    callback(newColor);
   };
 
-  var wizardEyesClickHandler = function () {
-    var newColor = getRandomArrayElement(EYES_COLORS);
-    this.style.fill = newColor;
-    this.value = newColor;
-    wizard.onEyesChange(newColor);
+  var wizardCoatClickHandler = function (evt) {
+    getWizardElementColor(evt, COAT_COLORS, wizard.onCoatChange);
   };
 
-  var wizardFireballClickHandler = function () {
-    var newColor = getRandomArrayElement(FIREBALL_COLORS);
-    this.style.backgroundColor = newColor;
-    this.value = newColor;
-    wizard.onFireballChange(newColor);
+  var wizardEyesClickHandler = function (evt) {
+    getWizardElementColor(evt, EYES_COLORS, wizard.onEyesChange);
+  };
+
+  var wizardFireballClickHandler = function (evt) {
+    getWizardElementColor(evt, FIREBALL_COLORS, wizard.onFireballChange);
   };
 
   var renderWizards = function (wizards) {
-    console.log(wizards)
     var fragment = document.createDocumentFragment();
     var takeAmount = wizards.length > AMOUNT_WIZARDS ? AMOUNT_WIZARDS : wizards.length;
 
