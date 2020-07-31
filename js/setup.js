@@ -132,10 +132,12 @@
   };
 
   var renderWizards = function (wizards) {
+    console.log(wizards)
     var fragment = document.createDocumentFragment();
     var takeAmount = wizards.length > AMOUNT_WIZARDS ? AMOUNT_WIZARDS : wizards.length;
 
     for (var i = 0; i < takeAmount; i++) {
+      similarList.innerHTML = '';
       fragment.appendChild(createWizard(wizards[i]));
     }
 
