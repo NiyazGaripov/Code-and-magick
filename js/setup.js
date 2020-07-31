@@ -133,7 +133,9 @@
 
   var renderWizards = function (wizards) {
     var fragment = document.createDocumentFragment();
-    for (var i = 0; i < AMOUNT_WIZARDS; i++) {
+    var takeAmount = wizards.length > AMOUNT_WIZARDS ? AMOUNT_WIZARDS : wizards.length;
+
+    for (var i = 0; i < takeAmount; i++) {
       fragment.appendChild(createWizard(wizards[i]));
     }
 
