@@ -7,6 +7,7 @@
   var coatColor;
   var eyesColor;
   var fireballColor;
+  var lastTimeout
 
   var COAT_COLORS = [
     'rgb(101, 137, 164)',
@@ -132,17 +133,32 @@
 
   wizard.onCoatChange = function (color) {
     coatColor = color;
-    updateWizards();
+    if (lastTimeout) {
+      window.clearTimeout(lastTimeout);
+    }
+    lastTimeout = window.setTimeout(function () {
+      updateWizards();
+    }, 500)
   }
 
   wizard.onEyesChange = function (color) {
     eyesColor = color;
-    updateWizards();
+    if (lastTimeout) {
+      window.clearTimeout(lastTimeout);
+    }
+    lastTimeout = window.setTimeout(function () {
+      updateWizards();
+    }, 500)
   }
 
   wizard.onFireballChange = function (color) {
     fireballColor = color;
-    updateWizards();
+    if (lastTimeout) {
+      window.clearTimeout(lastTimeout);
+    }
+    lastTimeout = window.setTimeout(function () {
+      updateWizards();
+    }, 500)
   }
 
   var successLoadDataHandler = function (wizards) {
