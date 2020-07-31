@@ -34,6 +34,8 @@
     '#e6e848',
   ];
 
+  var DEBOUNCE_INTERVAL = 500;
+
   var similarList = document.querySelector('.setup-similar-list');
   var template = document.querySelector('#similar-wizard-template');
   var templateItem = template.content.querySelector('.setup-similar-item');
@@ -131,34 +133,26 @@
     formWrap.querySelector('.setup-similar').classList.remove('hidden');
   }
 
-  wizard.onCoatChange = function (color) {
-    coatColor = color;
+  var debounce = function (callback) {
     if (lastTimeout) {
       window.clearTimeout(lastTimeout);
     }
-    lastTimeout = window.setTimeout(function () {
-      updateWizards();
-    }, 500)
+    lastTimeout = window.setTimeout(callback, DEBOUNCE_INTERVAL);
+  }
+
+  wizard.onCoatChange = function (color) {
+    coatColor = color;
+    debounce(updateWizards);
   }
 
   wizard.onEyesChange = function (color) {
     eyesColor = color;
-    if (lastTimeout) {
-      window.clearTimeout(lastTimeout);
-    }
-    lastTimeout = window.setTimeout(function () {
-      updateWizards();
-    }, 500)
+    debounce(updateWizards);
   }
 
   wizard.onFireballChange = function (color) {
     fireballColor = color;
-    if (lastTimeout) {
-      window.clearTimeout(lastTimeout);
-    }
-    lastTimeout = window.setTimeout(function () {
-      updateWizards();
-    }, 500)
+    debounce(updateWizards);
   }
 
   var successLoadDataHandler = function (wizards) {
