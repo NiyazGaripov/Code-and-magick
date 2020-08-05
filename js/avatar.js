@@ -8,6 +8,10 @@
 
   fileChooser.addEventListener('change', function () {
     var file = fileChooser.files[0];
+    var fileName = file.name.toLowerCase();
 
+    var matches = FILE_TYPES.some(function (it) {
+     return fileName.endsWith(it);
+    });
   });
 })();
